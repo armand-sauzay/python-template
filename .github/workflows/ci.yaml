@@ -1,0 +1,22 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: armand-sauzay/actions-python/lint@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: armand-sauzay/actions-python/test@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          test-flags: --version
