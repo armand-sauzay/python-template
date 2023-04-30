@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # enable manual release
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: armand-sauzay/actions-python/lint@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: armand-sauzay/actions-python/test@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          test-flags: --version
+
+  release:
+    name: Release
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    outputs:
+      new-release-published: ${{ steps.release.outputs.new-release-published }}
+      new-release-version: ${{ steps.release.outputs.new-release-version }}
+    steps:
+      - uses: armand-sauzay/actions-python/release@v1
+        id: release
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
