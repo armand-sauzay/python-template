@@ -35,4 +35,4 @@ jobs:
       - uses: armand-sauzay/actions-python/release@v1
         id: release
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.ADMIN_TOKEN }}
