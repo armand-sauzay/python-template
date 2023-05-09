@@ -4,7 +4,7 @@
 
 [tool.poetry]
 name = "python-template"
-version = "1.0.1"
+version = "1.0.2"
 description = ""
 authors = ["Armand Sauzay <sauzayarmand@gmail.com>"]
 readme = "README.md"
