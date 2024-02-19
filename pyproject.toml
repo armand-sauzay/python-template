@@ -1,14 +1,10 @@
-######################################################################
-## NOTE: THIS FILE SHOULD BE REPLACED BY RUNNING ./script/bootstrap ##
-######################################################################
-
 [tool.poetry]
-name = "python-template"
+name = "python-template" #this one can be replaced by the name with "-".
 version = "1.0.2"
 description = ""
 authors = ["Armand Sauzay <sauzayarmand@gmail.com>"]
 readme = "README.md"
-packages = [{include = "python_template"}]
+packages = [{include = "__REPO_NAME__"}] #this one can be replaced by the name with "_" instead of "-" so here it would be "python_template"
 
 [tool.poetry.dependencies]
 python = "^3.10"
