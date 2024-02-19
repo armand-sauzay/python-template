@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "python-template" #this one can be replaced by the name with "-".
-version = "1.0.2"
+version = "1.1.0"
 description = ""
 authors = ["Armand Sauzay <sauzayarmand@gmail.com>"]
 readme = "README.md"
