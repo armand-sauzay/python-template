@@ -1,32 +1,16 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["CI", "Test"]
+    branches: [main]
+    types:
+      - completed
   workflow_dispatch:
 
 jobs:
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: armand-sauzay/actions-python/lint@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: armand-sauzay/actions-python/test@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-flags: --version
-
   release:
     name: Release
-    needs: [lint, test]
     runs-on: ubuntu-latest
     outputs:
       new-release-published: ${{ steps.release.outputs.new-release-published }}
