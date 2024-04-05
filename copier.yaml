@@ -1,0 +1,19 @@
+project_name:
+    type: str
+    help: What is your project name? (kebab-case, like hello-world)
+
+module_name:
+    type: str
+    help: What is your Python module name? (snake_case, like hello_world)
+
+_answers_file: .copier/.copier-answers.yml
+
+_exclude: 
+- "copier.yaml"
+- "~*"
+- "*.py[co]" 
+- "__pycache__"
+- ".git"
+- ".DS_Store" 
+- ".svn"
+- LICENSE
