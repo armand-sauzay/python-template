@@ -1,19 +1,29 @@
 project_name:
-    type: str
-    help: What is your project name? (kebab-case, like hello-world)
+  type: str
+  help: What is your project name? (kebab-case, like hello-world)
 
 module_name:
-    type: str
-    help: What is your Python module name? (snake_case, like hello_world)
+  type: str
+  help: What is the name of your Python module? (snake_case, like hello_world)
+  default: "{{ project_name | replace('-', '_') }}"
+
+module_version:
+  type: str
+  help: What is the first version of your project?
+  default: 1.0.0
 
 _answers_file: .copier/.copier-answers.yml
 
-_exclude: 
-- "copier.yaml"
-- "~*"
-- "*.py[co]" 
-- "__pycache__"
-- ".git"
-- ".DS_Store" 
-- ".svn"
-- LICENSE
+_exclude:
+  - "__pycache__"
+  - ".DS_Store"
+  - ".git"
+  - ".svn"
+  - "*.py[co]"
+  - "~*"
+  - "copier.yaml"
+  - "LICENSE"
+
+_tasks:
+  - "find . -type d -name '{?*' -exec rm -rf {} +"
+  - "find . -type f -name '*.jinja' -exec rm -f {} +"
